@@ -13,6 +13,8 @@ app.use(express.static('public'));
 // 007-Require getElementsById and seedElements functions from './utils'
 const { getElementById, seedElements } = require('./utils');
 
+// 008-Create empty expressions array
+const expressions = [];
 
 // 006-Open a call to 'app.get()'
 app.get('/expressions', (req, res, next) => {
