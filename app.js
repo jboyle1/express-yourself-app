@@ -10,6 +10,10 @@ const PORT = process.env.PORT || 3000;
 // 005-Use static server to serve the Express Yourself website
 app.use(express.static('public'));
 
+// 007-Require getElementsById and seedElements functions from './utils'
+const { getElementById, seedElements } = require('./utils');
+
+
 // 006-Open a call to 'app.get()'
 app.get('/expressions', (req, res, next) => {
 
