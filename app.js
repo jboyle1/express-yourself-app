@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 // 007-Require getElementsById and seedElements functions from './utils'
-const { getElementById, seedElements } = require('./utils');
+const { getElementById, getIndexById, updateElement, seedElements } = require('./utils');
 
 // 008-Create empty expressions array
 const expressions = [];
@@ -36,7 +36,7 @@ app.get('/expressions/:id', (req, res, next) => {
     }
 });
 
-// 013-Open a PUT /expression/;id put route
+// 013-Open a PUT /expression/;id put route handler
 app.put('/expressions/:id', (res, req, next) => {
 
 });
