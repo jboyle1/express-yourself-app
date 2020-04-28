@@ -16,12 +16,13 @@ const { getElementById, seedElements } = require('./utils');
 // 008-Create empty expressions array
 const expressions = [];
 
-// 009-Invoke seedElements function with expressions (array) and 'expressions' string as arguments.
+// 009-Invoke seedElements function with expressions (array) and 'expressions' (string) as arguments.
 seedElements(expressions, 'expressions');
 
 // 006-Open a call to 'app.get()'
 app.get('/expressions', (req, res, next) => {
-
+    // 010-To allow server to respond use 'res.send()' to send back the expressions
+    res.send(expressions)
 });
 
 // 004-Invoke the app's '.listen()' method
