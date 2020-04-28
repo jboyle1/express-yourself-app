@@ -25,6 +25,12 @@ app.get('/expressions', (req, res, next) => {
     res.send(expressions)
 });
 
+// 011-Create a GET /expression/id get route to send back a single expression using 'req.params' and the pre written helper function 'getElementById(id, array).
+app.get('/expressions/:id', (req, res, next) => {
+    const foundExpression = getElementById(req.params.id,expressions);
+    res.send(foundExpression);
+})
+
 // 004-Invoke the app's '.listen()' method
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
