@@ -7,9 +7,13 @@ const app = express();
 // 003-Listen to specific server
 const PORT = process.env.PORT || 3000;
 
-// Use static server to serve the Express Yourself website
+// 005-Use static server to serve the Express Yourself website
 app.use(express.static('public'));
 
+// 006-Open a call to 'app.get()'
+app.get('/expressions', (req, res, next) => {
+
+});
 
 // 004-Invoke the app's '.listen()' method
 app.listen(PORT, () => {
