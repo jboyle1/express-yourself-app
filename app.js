@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 // 007-Require getElementsById and seedElements functions from './utils'
-const { getElementById, getIndexById, updateElement, seedElements } = require('./utils');
+const { getElementById, getIndexById, updateElement, seedElements, createElement } = require('./utils');
 
 // 008-Create empty expressions array
 const expressions = [];
@@ -38,7 +38,15 @@ app.get('/expressions/:id', (req, res, next) => {
 
 // 013-Open a PUT /expression/;id put route handler
 app.put('/expressions/:id', (res, req, next) => {
-
+    const expressionIndex = getElementById(req.params.id, expressions);
+     // 014-Use req.query to update the proper element in the expressions array and llow for invalid requests using an if else conditional statement
+    if (expressionIndex !== -1) {
+        updateElement(req.params.id, req.query, expressions);
+        res.send(expressions[expressionsIndex]);
+    } else {
+        res.status(404).send();
+    }
+   
 });
 
 // 004-Invoke the app's '.listen()' method
