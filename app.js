@@ -28,8 +28,13 @@ app.get('/expressions', (req, res, next) => {
 // 011-Create a GET /expression/id get route to send back a single expression using 'req.params' and the pre written helper function 'getElementById(id, array).
 app.get('/expressions/:id', (req, res, next) => {
     const foundExpression = getElementById(req.params.id,expressions);
-    res.send(foundExpression);
-})
+    // 012-Allow for invalid requests using an if else conditional statement
+    if (foundExpression) {
+        res.send(foundExpression);
+    } else {
+        res.status(404).send();
+    }
+});
 
 // 004-Invoke the app's '.listen()' method
 app.listen(PORT, () => {
