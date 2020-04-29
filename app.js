@@ -57,7 +57,18 @@ app.post('/expressions', (req, res, next) => {
     } else {
         res.status(400).send();
     }
-})
+});
+
+// 016-Create a DELETE /expressions/:id route handler. It should send back a 404 response for a request with an invalid id, and it should delete the proper element from the expressions array and send a 204 status with a valid id.
+app.delete('/expressions/:id', (req, res, next) => {
+    const expressionIndex = getIndexById(req.params.id, expressions);
+    if (expressionIndex !== -1) {
+        expressions.splice(expressionIndex, 1);
+        res.status(204).send();
+    } else {
+        res.status(404).send();
+    }
+});
 
 // 004-Invoke the app's '.listen()' method
 app.listen(PORT, () => {
