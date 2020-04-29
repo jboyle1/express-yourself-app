@@ -75,6 +75,16 @@ app.get('/animals', (req, res, next) => {
     res.send(animals);
 })
 
+// 018 - Create a GET /animals/:id route to respond with a single animal.
+app.get('/animals/:id', (req, res, next) => {
+    const animal = getElementById(req.params.id, animals);
+    if (animal) {
+        res.send(animal);
+    } else {
+        res.status(404).send();
+    }
+});
+
 // 004 - Invoke the app's '.listen()' method.
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
