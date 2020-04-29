@@ -22,6 +22,9 @@ seedElements(expressions, 'expressions');
 // 022 Create empty animals array.
 const animals = [];
 
+// 023 - Invoke animals function with animals (array) and 'animals' (string) as arguments.
+seedElements(animals, 'animals');
+
 // 006 - Open a call to 'app.get()'.
 app.get('/expressions', (req, res, next) => {
     // 010-To allow server to respond use 'res.send()' to send back the expressions.
