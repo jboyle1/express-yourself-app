@@ -85,6 +85,18 @@ app.get('/animals/:id', (req, res, next) => {
     }
 });
 
+// 019 - Create a PUT /animals/:id route to update an animal in animals and send back the updated animal.
+
+app.put('/expressions/:id', (req, res, next) => {
+    const expressionIndex = getIndexById(req.params.id, expressions);
+    if (expressionIndex !== -1) {
+        updateElement(req.params.id, req.query, expressions);
+        res.send(expressions[expressionIndex]);
+    } else {
+        res.status(404).send();
+    }
+  });
+
 // 004 - Invoke the app's '.listen()' method.
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
