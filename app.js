@@ -86,25 +86,35 @@ app.get('/animals/:id', (req, res, next) => {
 });
 
 // 019 - Create a PUT /animals/:id route to update an animal in animals and send back the updated animal.
-
-app.put('/expressions/:id', (req, res, next) => {
-    const expressionIndex = getIndexById(req.params.id, expressions);
-    if (expressionIndex !== -1) {
-        updateElement(req.params.id, req.query, expressions);
-        res.send(expressions[expressionIndex]);
+app.put('/animals/:id', (req, res, next) => {
+    const animalIndex = getIndexById(req.params.id, animals);
+    if (animalIndex !== -1) {
+        updateElement(req.params.id, req.query, animals);
+        res.send(animals[animalIndex]);
     } else {
         res.status(404).send();
     }
 });
 
 // 020 - Create a POST /animals route to add new animals to the animals and respond with the new animal.
-app.post('/expressions', (req, res, next) => {
-    const receivedExpression = createElement('expressions', req.query);
-    if (receivedExpression) {
-        expressions.push(receivedExpression);
-        res.status(201).send(receivedExpression);
+app.post('/animals', (req, res, next) => {
+    const receivedAnimal = createElement('animals', req.query);
+    if (receivedAnimal) {
+        animals.push(receivedAnimal);
+        res.status(201).send(receivedAnimal);
     } else {
         res.status(400).send();
+    }
+});
+
+// 021 - Create a DELETE /animals/:id route to delete animals by ID.
+app.delete('/animals/:id', (req, res, next) => {
+    const animalIndex = getIndexById(req.params.id, animals);
+    if (animalIndex !== -1) {
+        animals.splice(animalIndex, 1);
+        res.status(204).send();
+    } else {
+        res.status(404).send();
     }
 });
 
