@@ -19,12 +19,6 @@ const expressions = [];
 // 009 - Invoke seedElements function with expressions (array) and 'expressions' (string) as arguments.
 seedElements(expressions, 'expressions');
 
-// 022 Create empty animals array.
-const animals = [];
-
-// 023 - Invoke animals function with animals (array) and 'animals' (string) as arguments.
-seedElements(animals, 'animals');
-
 // 006 - Open a call to 'app.get()'.
 app.get('/expressions', (req, res, next) => {
     // 010-To allow server to respond use 'res.send()' to send back the expressions.
@@ -70,54 +64,6 @@ app.delete('/expressions/:id', (req, res, next) => {
     const expressionIndex = getIndexById(req.params.id, expressions);
     if (expressionIndex !== -1) {
         expressions.splice(expressionIndex, 1);
-        res.status(204).send();
-    } else {
-        res.status(404).send();
-    }
-});
-
-// 017 - Add additional functionality by creating Animal Mode. Add a GET /animals route handler to return an array of all animals.
-app.get('/animals', (req, res, next) => {
-    res.send(animals);
-})
-
-// 018 - Create a GET /animals/:id route to respond with a single animal.
-app.get('/animals/:id', (req, res, next) => {
-    const animal = getElementById(req.params.id, animals);
-    if (animal) {
-        res.send(animal);
-    } else {
-        res.status(404).send();
-    }
-});
-
-// 019 - Create a PUT /animals/:id route to update an animal in animals and send back the updated animal.
-app.put('/animals/:id', (req, res, next) => {
-    const animalIndex = getIndexById(req.params.id, animals);
-    if (animalIndex !== -1) {
-        updateElement(req.params.id, req.query, animals);
-        res.send(animals[animalIndex]);
-    } else {
-        res.status(404).send();
-    }
-});
-
-// 020 - Create a POST /animals route to add new animals to the animals and respond with the new animal.
-app.post('/animals', (req, res, next) => {
-    const receivedAnimal = createElement('animals', req.query);
-    if (receivedAnimal) {
-        animals.push(receivedAnimal);
-        res.status(201).send(receivedAnimal);
-    } else {
-        res.status(400).send();
-    }
-});
-
-// 021 - Create a DELETE /animals/:id route to delete animals by ID.
-app.delete('/animals/:id', (req, res, next) => {
-    const animalIndex = getIndexById(req.params.id, animals);
-    if (animalIndex !== -1) {
-        animals.splice(animalIndex, 1);
         res.status(204).send();
     } else {
         res.status(404).send();
