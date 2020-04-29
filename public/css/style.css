@@ -14,33 +14,17 @@ header {
 .canvas {
     width: 920px;
     position: relative;
-    left: 11%;
+    margin: auto;
+    text-align: center;
     padding-top: 1.375rem;
+    margin-top: 50px;
 }
 
-@media only screen and (max-width: 930px) {
-    .canvas {
-        left: 5%;
-    }
+.outside-canvas {
+    margin: auto;
+    text-align: center;
 }
 
-@media only screen and (max-width: 665px) {
-    .canvas {
-        left: -5%;
-    }
-}
-
-@media only screen and (max-width: 570px) {
-    .canvas {
-        left: -15%;
-    }
-}
-
-@media only screen and (max-width: 530px) {
-    .canvas {
-        left: -160px;
-    }
-}
 
 form {
     height: 180px;
