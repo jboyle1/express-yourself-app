@@ -19,6 +19,9 @@ const expressions = [];
 // 009 - Invoke seedElements function with expressions (array) and 'expressions' (string) as arguments.
 seedElements(expressions, 'expressions');
 
+// 022 Create empty animals array.
+const animals = [];
+
 // 006 - Open a call to 'app.get()'.
 app.get('/expressions', (req, res, next) => {
     // 010-To allow server to respond use 'res.send()' to send back the expressions.
