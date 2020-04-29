@@ -95,7 +95,18 @@ app.put('/expressions/:id', (req, res, next) => {
     } else {
         res.status(404).send();
     }
-  });
+});
+
+// 020 - Create a POST /animals route to add new animals to the animals and respond with the new animal.
+app.post('/expressions', (req, res, next) => {
+    const receivedExpression = createElement('expressions', req.query);
+    if (receivedExpression) {
+        expressions.push(receivedExpression);
+        res.status(201).send(receivedExpression);
+    } else {
+        res.status(400).send();
+    }
+});
 
 // 004 - Invoke the app's '.listen()' method.
 app.listen(PORT, () => {
